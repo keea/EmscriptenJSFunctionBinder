@@ -9,6 +9,11 @@ add_executable(EmscriptenJSFunctionBinder
 )
 
 if(EMSCRIPTEN)
-  set_target_properties(EmscriptenJSFunctionBinder PROPERTIES SUFFIX ".html")
-  target_link_options(EmscriptenJSFunctionBinder PRIVATE "-sUSE_WEBGPU=1")
+  set(LOPTS "${LOPTS} -lembind")
+  set(LOPTS "${LOPTS} -s MODULARIZE=1")
+  set(LOPTS "${LOPTS} -s 'EXPORT_NAME=\"createModule\"'")
+  set_target_properties(EmscriptenJSFunctionBinder
+        PROPERTIES 
+        LINK_FLAGS ${LOPTS}
+  )
 endif()

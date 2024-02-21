@@ -1,0 +1,15 @@
+<!doctype html>
+
+<head>
+    Emscripten JSFunction Binder
+</head>
+
+<html>
+<script src="EmscriptenJSFunctionBinder.js"></script>
+<script>
+    createModule().then(function (Module) {
+        Module.testString("hello world!!");
+    });
+</script>
+
+</html>
